@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <script>
+      (function(){
+        var t=localStorage.getItem('theme_mode');
+        var d=t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches);
+        if(d)document.documentElement.classList.add('dark');
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#22c55e" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-167x167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <title>NajdiTo</title>
+    <meta name="description" content="Jedna aplikácia, tisíce vrátených vecí. Nájdite stratené veci alebo nahláste nálezy.">
+    <meta name="author" content="Straty a nálezy" />
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/ZkLuBoK2Wwe3PVxBZ46N4hg60QT2/social-images/social-1774219194426-1000032415.webp">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/ZkLuBoK2Wwe3PVxBZ46N4hg60QT2/social-images/social-1774219194426-1000032415.webp">
+    
+  
+  
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <meta property="og:title" content="NajdiTo">
+  <meta name="twitter:title" content="NajdiTo">
+  <meta property="og:description" content="Jedna aplikácia, tisíce vrátených vecí. Nájdite stratené veci alebo nahláste nálezy.">
+  <meta name="twitter:description" content="Jedna aplikácia, tisíce vrátených vecí. Nájdite stratené veci alebo nahláste nálezy.">
+
+  <!-- OneSignal Web Push SDK v16 (browser/PWA only — NOT loaded in Capacitor WebView) -->
+  <script>
+    (function () {
+      // Detect Capacitor native shell. If we're inside an installed Android/iOS app,
+      // the native OneSignal Cordova plugin handles registration via FCM/APNs.
+      // Loading the Web SDK here would create a parallel "Chrome (web)" subscription
+      // and prevent the device from being registered as Android in OneSignal.
+      var isCapacitor =
+        !!(window).Capacitor && (window).Capacitor.isNativePlatform && (window).Capacitor.isNativePlatform();
+      if (isCapacitor) {
+        console.log("[OneSignal] Skipping Web SDK init — running in Capacitor (native plugin handles push)");
+        return;
+      }
+      var s = document.createElement("script");
+      s.src = "https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js";
+      s.defer = true;
+      document.head.appendChild(s);
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      window.OneSignalDeferred.push(async function (OneSignal) {
+        try {
+          await OneSignal.init({
+            appId: "6c5a2ebd-7e22-4ab6-a00f-df4835aba737",
+            allowLocalhostAsSecureOrigin: true,
+            serviceWorkerParam: { scope: "/" },
+            serviceWorkerPath: "OneSignalSDKWorker.js",
+            serviceWorkerUpdaterPath: "OneSignalSDKUpdaterWorker.js",
+            notifyButton: { enable: false },
+          });
+          console.log("[OneSignal] Web SDK initialized");
+        } catch (e) {
+          console.warn("[OneSignal] Web init failed", e);
+        }
+      });
+    })();
+  </script>
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
